@@ -1,0 +1,182 @@
+body , html{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+.content-wrapper{
+    padding:0 4%;
+    width:960px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/*ヘッダー*/
+.header-wrapper{
+    width: 960px;
+    margin: 0 auto;
+    padding: 0 4%;
+}
+.header-contents{
+    justify-content: space-between;
+    display: flex;
+}
+.header-left{
+    margin: 5px 0;
+    padding: 0 8px;
+    background-color: #242636;
+    color: #fff;
+    font-weight: bolder;
+}
+.header-right{
+    margin: 5px 0;
+    align-items: center;
+}
+.header-right ul{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+}
+
+/*メインビジュアル*/
+.main-image{
+    width: 100%;
+    height: 600px;
+}
+
+/*自己紹介*/
+.content-wrapper h1{
+    border-bottom: 1px #000 solid;
+    display: inline-block;
+    margin-bottom: 50px;
+}
+.content-wrapper p{
+    margin: 0;
+}
+.introduce-content{
+    height: 300px;
+    padding: 30px;
+}
+.contents{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+.content{
+    text-align: left;
+}
+.content img{
+    border-radius: 50%;
+    width: 78%;
+}
+
+/*プロフィール画像*/
+.profile-content{
+    height: 600px;
+}
+.image-contents{
+    display: flex;
+    justify-content: space-between; 
+    gap: 20px;
+}
+.image-content{
+    flex: 1; 
+    text-align: center;
+    flex-direction: column; 
+}
+.image-content{
+    text-align: center;
+    padding: 10px 0;
+}
+.image-content p{
+    padding: 10px 0;
+}
+.image-text{
+   font-weight: bold;
+   padding: 10px 0; 
+}
+.image-content img {
+    width: 100%;
+}
+
+
+/*フッター*/
+footer p{
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/*スマホ用*/
+@media (max-width:600px) {
+    .content-wrapper{
+        width: auto;
+        margin: 0 auto;
+    }
+
+/*ヘッダー*/
+.header-wrapper{
+    width: auto;
+    margin: 0 auto;
+}
+.header-left{
+    padding: 10px 20px;
+}
+.header-right{
+    padding: 10px 0;
+}
+.header-right ul{
+    display: flex;
+}
+
+/*メインビジュアル*/
+.main-image{
+    object-fit: none;
+}
+
+/*自己紹介*/
+.introduce-content{
+    height: auto;
+    display: grid;
+}
+.introduce-content h1{
+    margin-top: 100px;
+}
+.contents{
+    display: inline-block;
+}
+.content img{
+    width: 25%;
+    margin: 10px 40%;
+}
+
+/*プロフィール画像*/
+.profile-content{
+    height: auto;
+    width: auto;
+}
+.profile-content h1{
+    margin-top: 100px;
+}
+.image-contents{
+    display: grid;
+    margin-bottom: 150px;
+}
+.image-content{
+    width: 80%;
+    margin: 0 auto;
+    padding: 0;
+}
+.image-content img {
+    width: 100%;
+}
+
+}
