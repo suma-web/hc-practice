@@ -1,0 +1,62 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: #d3e2eb;
+    display: grid;
+    grid-template:
+        "header header header"
+        "left   center right"
+        "footer footer footer"
+    ;
+}
+header{
+    grid-area: header;
+    background: #fff;
+}
+header ul{
+    padding: 0;
+    display: flex;
+    list-style: none;
+}
+header li{
+    width: 30px;
+}
+section{
+    text-align: center;
+}
+section h2{
+    transform: scale(3);
+}
+aside{
+    grid-area: left;
+}
+main{
+    grid-area: center;
+}
+nav{
+    grid-area: right;
+}
+footer{
+    grid-area: footer;
+}
+/*クラス属性*/
+.header-items{
+    display: flex;
+    justify-content: space-between;
+}
+.header-items p{
+    width: 100px;
+    color: #fff;
+    background: #4bb2f2;
+    border-radius: 20px;
+    text-align: center;
+    padding: 5px;
+    font-weight: bold;
+}
+.content-wrapper{
+    width: 1000px;
+    margin: 0 auto;
+}
+.header-image{
+    width: 10%;
+}
