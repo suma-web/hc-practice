@@ -23,10 +23,16 @@ def result(golf_matches_num, players_points_num):
         return result_name[point]
 
 
-lines = [line.strip() for line in sys.stdin if line.strip()]
-
-golf_matches = list(map(int, lines[0].split(",")))
-players_points = list(map(int, lines[1].split(",")))
+try:
+    lines = [line.strip() for line in sys.stdin if line.strip()]
+    golf_matches = list(map(int, lines[0].split(",")))
+    players_points = list(map(int, lines[1].split(",")))
+except ValueError:
+    print("数字を入力してください")
+except IndexError:
+    print("読み込むファイルの一行目に規定打数、二行目にプレイヤーの打数を記述してください")
+except TypeError:
+    print("型を確認してください")
 
 for gm, pp in zip(golf_matches, players_points):
     result_point.append(result(gm, pp))
