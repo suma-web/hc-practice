@@ -4,25 +4,42 @@ golf_matches = []
 players_points = []
 result_point = []
 
-def result(golf_matches_num, players_points_num):
-    point = players_points_num - golf_matches_num
-    if players_points_num == 1 and golf_matches_num == 5:
-        return "コンドル"
-    elif players_points_num == 1:
-        return "ホールインワン"
-    elif point > 3:
-        return f"{point}ボギー"
-    elif golf_matches_num == 3:
-        result_name = ["パー","ボギー","2ボギー","3ボギー","イーグル","バーディ"]
-        return result_name[point]
-    elif golf_matches_num == 4:
-        result_name = ["パー","ボギー","2ボギー","3ボギー","イーグル","バーディ"]
-        return result_name[point]
-    elif golf_matches_num == 5:
-        result_name = ["パー","ボギー","2ボギー","3ボギー","コンドル","アルバトロス","イーグル","バーディ"]
-        return result_name[point]
-    else:
-        return None
+score_map = {
+    3: {  # par3
+        0:  "パー",
+        1:  "ボギー",
+        -1: "バーディ",
+        -2: "イーグル",
+    },
+    4: {  # par4
+        0:  "パー",
+        1:  "ボギー",
+        -1: "バーディ",
+        -2: "イーグル",
+        -3: "アルバトロス",
+    },
+    5: {  # par5
+        0:  "パー",
+        1:  "ボギー",
+        -1: "バーディ",
+        -2: "イーグル",
+        -3: "アルバトロス",
+    },
+}
+
+def result(par, strokes):
+    diff = strokes - par
+    if strokes == 1:
+        return "コンドル" if par >= 5 else "ホールインワン"
+
+    name = score_map.get(par, {}).get(diff)
+    if name is not None:
+        return name
+    
+    if diff >= 2:
+        return f"{diff}ボギー"
+
+    return None
 
 
 try:
