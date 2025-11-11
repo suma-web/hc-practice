@@ -1,3 +1,0 @@
-[submodule "python/vending_machine"]
-	path = python/vending_machine
-	url = https://github.com/suma-web/vending_machine.git
