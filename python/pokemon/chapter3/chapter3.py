@@ -46,7 +46,7 @@ class Pokemon:
         self.type2 = type2
         self.hp = hp
     
-    def attack(self,name):
+    def attack(self):
         print(f'{self.name}のこうげき')
 
 # class Pokemon constructor(_name: String, _type: String) {
