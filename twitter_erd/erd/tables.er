@@ -39,31 +39,31 @@
 
 [follows]
   *id               {label: "bigint, not null"}
-  follower_user_id  {label: "bigint, not null, FK(users)"}
-  followed_user_id  {label: "bigint, not null, FK(users)"}
+  follower_id  {label: "bigint, not null, FK(users)"}
+  followed_id  {label: "bigint, not null, FK(users)"}
   created_at        {label: "datetime, not null"}
   updated_at        {label: "datetime, not null"}
-# unique: (follower_user_id, followed_user_id)
-# check: follower_user_id <> followed_user_id  -- 自分自身はフォロー不可
+# unique: (follower_id, followed_id)
+# check: follower_id <> followed_id  -- 自分自身はフォロー不可
 
 [direct_messages]
-  *id               {label: "bigint, not null"}
-  sender_user_id    {label: "bigint, not null, FK(users)"}
-  recipient_user_id {label: "bigint, not null, FK(users)"}
-  body              {label: "text, not null"}
-  created_at        {label: "datetime, not null"}
-  updated_at        {label: "datetime, not null"}
-  read_at           {label: "datetime, null"}
-
-[notifications]
   *id            {label: "bigint, not null"}
-  user_id        {label: "bigint, not null, FK(users)"}
-  actor_user_id  {label: "bigint, not null, FK(users)"}
-  type           {label: "varchar(20), not null"}            # like / follow など
-  tweet_id       {label: "bigint, null, FK(tweets)"}
+  sender_id      {label: "bigint, not null, FK(users)"}
+  recipient_id   {label: "bigint, not null, FK(users)"}
+  body           {label: "text, not null"}
   created_at     {label: "datetime, not null"}
   updated_at     {label: "datetime, not null"}
   read_at        {label: "datetime, null"}
+
+[notifications]
+  *id          {label: "bigint, not null"}
+  user_id      {label: "bigint, not null, FK(users)"}
+  actor_id     {label: "bigint, not null, FK(users)"}
+  type         {label: "varchar(20), not null"}            # like / follow など
+  tweet_id     {label: "bigint, null, FK(tweets)"}
+  created_at   {label: "datetime, not null"}
+  updated_at   {label: "datetime, not null"}
+  read_at      {label: "datetime, null"}
 
 # リレーションシップ
 
@@ -75,12 +75,12 @@ tweets 1--* tweet_likes
 users 1--* tweet_bookmarks
 tweets 1--* tweet_bookmarks
 
-users 1--* follows           {label: "follower"}   # follower_user_id
-users 1--* follows           {label: "followed"}   # followed_user_id
+users 1--* follows           {label: "follower"}   # follower_id
+users 1--* follows           {label: "followed"}   # followed_id
 
-users 1--* direct_messages   {label: "sender"}     # sender_user_id
-users 1--* direct_messages   {label: "recipient"}  # recipient_user_id
+users 1--* direct_messages   {label: "sender"}     # sender_id
+users 1--* direct_messages   {label: "recipient"}  # recipient_id
 
 users 1--* notifications     {label: "target"}     # user_id
-users 1--* notifications     {label: "actor"}      # actor_user_id
+users 1--* notifications     {label: "actor"}      # actor_id
 tweets 1--* notifications
