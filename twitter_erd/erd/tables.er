@@ -1,0 +1,86 @@
+[users]
+  *id               {label: "bigint, not null"}
+  email             {label: "varchar(255), not null, uniq"}
+  username          {label: "varchar(50), not null, uniq"}
+  phone_number      {label: "varchar(20), null, uniq"}
+  name              {label: "varchar(100), null"}
+  bio               {label: "text, null"}
+  location          {label: "varchar(255), null"}
+  website_url       {label: "varchar(255), null"}
+  birth_date        {label: "date, null"}
+  profile_image_url {label: "varchar(255), null"}
+  avatar_image_url  {label: "varchar(255), null"}
+  created_at        {label: "datetime, not null"}
+  updated_at        {label: "datetime, not null"}
+
+[tweets]
+  *id                {label: "bigint, not null"}
+  user_id            {label: "bigint, not null, FK(users)"}
+  body               {label: "varchar(140), not null"}
+  original_tweet_id  {label: "bigint, null, FK(tweets)"}
+  created_at         {label: "datetime, not null"}
+  updated_at         {label: "datetime, not null"}
+
+[tweet_likes]
+  *id        {label: "bigint, not null"}
+  user_id    {label: "bigint, not null, FK(users)"}
+  tweet_id   {label: "bigint, not null, FK(tweets)"}
+  created_at {label: "datetime, not null"}
+  updated_at {label: "datetime, not null"}
+# unique: (user_id, tweet_id)
+
+[tweet_bookmarks]
+  *id        {label: "bigint, not null"}
+  user_id    {label: "bigint, not null, FK(users)"}
+  tweet_id   {label: "bigint, not null, FK(tweets)"}
+  created_at {label: "datetime, not null"}
+  updated_at {label: "datetime, not null"}
+# unique: (user_id, tweet_id)
+
+[follows]
+  *id               {label: "bigint, not null"}
+  follower_id  {label: "bigint, not null, FK(users)"}
+  followed_id  {label: "bigint, not null, FK(users)"}
+  created_at        {label: "datetime, not null"}
+  updated_at        {label: "datetime, not null"}
+# unique: (follower_id, followed_id)
+# check: follower_id <> followed_id  -- 自分自身はフォロー不可
+
+[direct_messages]
+  *id            {label: "bigint, not null"}
+  sender_id      {label: "bigint, not null, FK(users)"}
+  recipient_id   {label: "bigint, not null, FK(users)"}
+  body           {label: "text, not null"}
+  created_at     {label: "datetime, not null"}
+  updated_at     {label: "datetime, not null"}
+  read_at        {label: "datetime, null"}
+
+[notifications]
+  *id          {label: "bigint, not null"}
+  user_id      {label: "bigint, not null, FK(users)"}
+  actor_id     {label: "bigint, not null, FK(users)"}
+  type         {label: "varchar(20), not null"}            # like / follow など
+  tweet_id     {label: "bigint, null, FK(tweets)"}
+  created_at   {label: "datetime, not null"}
+  updated_at   {label: "datetime, not null"}
+  read_at      {label: "datetime, null"}
+
+# リレーションシップ
+
+users 1--* tweets
+
+users 1--* tweet_likes
+tweets 1--* tweet_likes
+
+users 1--* tweet_bookmarks
+tweets 1--* tweet_bookmarks
+
+users 1--* follows           {label: "follower"}   # follower_id
+users 1--* follows           {label: "followed"}   # followed_id
+
+users 1--* direct_messages   {label: "sender"}     # sender_id
+users 1--* direct_messages   {label: "recipient"}  # recipient_id
+
+users 1--* notifications     {label: "target"}     # user_id
+users 1--* notifications     {label: "actor"}      # actor_id
+tweets 1--* notifications
