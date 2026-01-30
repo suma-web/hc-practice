@@ -1,4 +1,5 @@
-import {result} from './calendar.js';
+import {showMonthYear} from './calendar.js';
+import {calendarResult} from './calendar.js';
 
 
 const arg = process.argv.slice(2);
@@ -11,8 +12,11 @@ if (1>option || option>12){
     if (command === '-m' && (1<=option && option<=12)){
             const mm = option;
             const yyyy = new Date().getFullYear();
-            result(yyyy,mm);
+
+            showMonthYear(yyyy,mm);
+            calendarResult(yyyy, mm);
     }else{
-        result();
+        showMonthYear();
+        calendarResult();
     }
 }
