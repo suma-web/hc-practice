@@ -1,6 +1,7 @@
 const taskEle = document.getElementById('taskEle');
 const taskForm = document.getElementById('taskForm');
 const taskList = document.getElementById('taskList');
+const openBtn = document.getElementById('openBtn');
 
 
 function submitTask(e){
@@ -60,5 +61,10 @@ function counter(){
     document.getElementById('taskNumer').textContent = todo;
 }
 
+function toggleForm(e){
+    e.preventDefault();
+    taskForm.classList.toggle('hidden');
+}
 
+openBtn.addEventListener('click', toggleForm);
 taskForm.addEventListener('submit',submitTask);

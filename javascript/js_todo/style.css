@@ -1,5 +1,12 @@
-form{
-    margin-bottom: 100px;
+header{
+    background-color: rgb(87, 86, 84);
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+header > span{   
+    color: white;
+    font-size: large;
 }
 
 ul{
@@ -14,6 +21,10 @@ span{
     margin: 0 20px 0 10px;
 }
 
+input[type="text"]{
+    min-width: 300px;
+}
+
 input[type="checkbox"]:checked + span {
   text-decoration: line-through;
   color: #888;
@@ -21,6 +32,49 @@ input[type="checkbox"]:checked + span {
 
 button{
     margin-left: 10px;
+    background-color:rgb(51, 132, 194);
+    color: #FFF;
+}
+
+table {
+  border: 2px solid rgb(255, 255, 255);
+  font-family: sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+thead{
+  background-color: rgb(0, 0, 0);
+  color: #FFF;
+}
+
+tbody{
+    background-color: rgb(233, 233, 233); 
+}
+
+th,
+td {
+  border: 1px solid rgb(255, 255, 255);
+  padding: 8px 10px;
+  text-align: center;
+}
+
+.container{
+    padding: 30px 50px ;
+    margin-top: 50px;
+}
+
+.shownum{
+    padding: 30px 0;
+    font-size: larger;
+}
+
+.hidden{
+    display: none;
+}
+
+.visible{
+    display: block;
 }
 
 .tasklist-style{
