@@ -1,0 +1,28 @@
+form{
+    margin-bottom: 100px;
+}
+
+ul{
+    list-style: none;
+}
+
+li{
+    margin: 10px 0;
+}
+
+span{
+    margin: 0 20px 0 10px;
+}
+
+input[type="checkbox"]:checked + span {
+  text-decoration: line-through;
+  color: #888;
+}
+
+button{
+    margin-left: 10px;
+}
+
+.tasklist-style{
+    margin-top: 50px;
+}
