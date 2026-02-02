@@ -8,18 +8,17 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+    <header><span>Todoリスト</span></header>
     <div class="container">
-        <h1>Todoリスト</h1>
-        <h4>タスクを記録しよう</h4>
-        <form id="taskForm">
-            <label>タスク：<input type="text" id="taskEle" placeholder="入力欄"></label>
+        <h6><a href="#" id="openBtn">＋新しいタスクを追加</a></h6>
+        <form id="taskForm" class="hidden">
+            <input type="text" id="taskEle" placeholder="入力欄">
             <button type="submit">保存</button>
         </form>
-        <h2>全タスク</h2>
-        <p>全タスク数：<label id="allNumer">0</label></p>
-        <p>未完了：<label id="taskNumer">0</label></p>
-        <p>完了：<label id="doneNumer">0</label></p>
-        
+        <div class="shownum">
+            <p>全：<label id="allNumer">0</label> / 未：<label id="taskNumer">0</label> / 完：<label id="doneNumer">0</label></p>
+        </div>
+
         <div class="tasklist-style">
             <h3>タスク一覧</h3>
             <ul id="taskList"></ul>
