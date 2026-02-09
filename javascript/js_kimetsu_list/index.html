@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+    <header class="d-flex justify-content-center py-3 text-bg-dark">
+        <h1>鬼滅の刃API</h1>
+    </header>
+
+    <div class="container p-4 mt-5 position-relative">
+        <div class="btn-group position-absolute top-50 start-50 translate-middle" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" value="all" autocomplete="off" checked>
+            <label class="btn btn-outline-primary p-2" for="btnradio1">全キャラ</label>
+
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" value="鬼殺隊" autocomplete="off">
+            <label class="btn btn-outline-primary p-2" for="btnradio2">鬼滅隊</label>
+
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" value="柱" autocomplete="off">
+            <label class="btn btn-outline-primary p-2" for="btnradio3">柱</label>
+
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio4" value="鬼" autocomplete="off">
+            <label class="btn btn-outline-primary p-2" for="btnradio4">鬼</label>
+        </div>
+    </div>
+
+    <div class="container p-4 mt-5 position-relative">
+        <ul id="list" class="d-flex p-0 flex-wrap"></ul>
+    </div>
+
+    <script src="./app.js/get.js"></script>
+</body>
+</html>
+
+<!-- 
+ページを開くと、デフォルトで全キャラクター一覧が表示される。縦3列に表示。細かいCSSは各人にお任せ。
+ラジオボタンを表示し、選択すると、選択した種類のキャラクター一覧が表示される。 （選択するたびに、asyn/awaitでapiを叩くイメージ。） 選択できる項目は以下の通り。
+・全キャラクター
+・鬼殺隊
+・柱
+・鬼
+ラジオボタンを押して、一覧が表示される間は、ローディング画面を表示。
+表示される内容としては、以下の通り。
+・名前
+・画像(絶対パスとして、https://ihatov08.github.ioを指定してください)
+・カテゴリ
+ -->
+
+ <!-- API: https://ihatov08.github.io/kimetsu_api/ -->
