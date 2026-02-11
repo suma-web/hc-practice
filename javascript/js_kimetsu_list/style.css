@@ -14,5 +14,17 @@ li {
 }
 
 img {
-    width: 200px;
+    width: 50%;
+}
+
+.loading{
+    margin-top: 50px;
+    font-size: large;
+    text-align: center;
+    color: #0d6efd;
+    
+}
+
+.hidden{
+    display: none;
 }
