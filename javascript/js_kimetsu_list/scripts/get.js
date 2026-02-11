@@ -1,5 +1,7 @@
-let allData = [];
+import { loading } from "./load.js";
 
+
+let allData = [];
 
 function jsonList(list) {
     const ul = document.getElementById('list');
@@ -24,7 +26,11 @@ async function characterList() {
     jsonList(allData);
 
     document.querySelectorAll('input[name="btnradio"]').forEach(radio => {
-        radio.addEventListener('change', () => {
+        radio.addEventListener('change', async () => {
+
+            loading.show();
+
+            await new Promise(resolve => setTimeout(resolve, 1500));
 
             const value =  document.querySelector('input[name="btnradio"]:checked').value;
             if (value === 'all'){
@@ -35,6 +41,8 @@ async function characterList() {
                 );
                 jsonList(filtered);
             }
+
+            loading.hide();
 
         });
     })
