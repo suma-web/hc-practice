@@ -1,7 +1,7 @@
 import { loading } from "./load.js";
 
 
-let allData = [];
+const BASE_URL = 'https://ihatov08.github.io'
 
 function jsonList(list) {
     const ul = document.getElementById('list');
@@ -12,40 +12,35 @@ function jsonList(list) {
         li.textContent = name;
 
         const img = document.createElement('img');
-        img.src = `https://ihatov08.github.io${image}`;
+        img.src = BASE_URL + image;
 
         ul.appendChild(li);
         li.append(img);
     });
 }
 
-async function characterList() {
+async function updateView() {
+    loading.show();
+    await new Promise(resolve => setTimeout(resolve, 1500));
+
+    const value =
+      document.querySelector('input[name="btnradio"]:checked').value;
+
     const res = await fetch('https://ihatov08.github.io/kimetsu_api/api/all.json');
-    allData = await res.json();
+    const data = await res.json();
 
-    jsonList(allData);
+    if (value === 'all') {
+        jsonList(data);
+    } else {
+        jsonList(data.filter(item => item.category === value));
+    }
+    
+    loading.hide();
+}
 
-    document.querySelectorAll('input[name="btnradio"]').forEach(radio => {
-        radio.addEventListener('change', async () => {
+document.querySelectorAll('input[name="btnradio"]')
+  .forEach(radio => {
+        radio.addEventListener('change', updateView);
+  });
 
-            loading.show();
-
-            await new Promise(resolve => setTimeout(resolve, 1500));
-
-            const value =  document.querySelector('input[name="btnradio"]:checked').value;
-            if (value === 'all'){
-                jsonList(allData);
-            } else {
-                const filtered = allData.filter(item => 
-                    item.category === value
-                );
-                jsonList(filtered);
-            }
-
-            loading.hide();
-
-        });
-    })
-};
-
-characterList();
+updateView();
