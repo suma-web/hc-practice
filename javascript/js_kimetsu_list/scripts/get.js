@@ -3,6 +3,14 @@ import { loading } from "./load.js";
 
 const BASE_URL = 'https://ihatov08.github.io'
 
+const categoryMap = {
+  all: 'all.json',
+  鬼殺隊: 'kisatsutai.json',
+  柱: 'hashira.json',
+  鬼: 'oni.json'
+};
+
+
 function jsonList(list) {
     const ul = document.getElementById('list');
     ul.innerHTML = '';
@@ -26,16 +34,20 @@ async function updateView() {
     const value =
       document.querySelector('input[name="btnradio"]:checked').value;
 
-    const res = await fetch('https://ihatov08.github.io/kimetsu_api/api/all.json');
-    const data = await res.json();
+    const categoryName = categoryMap[value];
 
-    if (value === 'all') {
+    const url = `https://ihatov08.github.io/kimetsu_api/api/${categoryName}`;
+
+    try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('API error');
+        const data = await res.json();
         jsonList(data);
-    } else {
-        jsonList(data.filter(item => item.category === value));
+    } catch (err) {
+        console.error(err);
+    } finally {
+        loading.hide();
     }
-    
-    loading.hide();
 }
 
 document.querySelectorAll('input[name="btnradio"]')
