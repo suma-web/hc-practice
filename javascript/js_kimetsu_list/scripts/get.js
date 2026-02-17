@@ -5,9 +5,9 @@ const BASE_URL = 'https://ihatov08.github.io'
 
 const categoryMap = {
   all: 'all.json',
-  鬼殺隊: 'kisatsutai.json',
-  柱: 'hashira.json',
-  鬼: 'oni.json'
+  kisatsutai: 'kisatsutai.json',
+  hashira: 'hashira.json',
+  oni: 'oni.json'
 };
 
 
@@ -31,12 +31,11 @@ async function updateView() {
     loading.show();
     await new Promise(resolve => setTimeout(resolve, 1500));
 
-    const value =
-      document.querySelector('input[name="btnradio"]:checked').value;
+    const value = document.querySelector('input[name="btnradio"]:checked').value;
 
     const categoryName = categoryMap[value];
 
-    const url = `https://ihatov08.github.io/kimetsu_api/api/${categoryName}`;
+    const url = `${BASE_URL}/kimetsu_api/api/${categoryName}`;
 
     try {
         const res = await fetch(url);
