@@ -1,0 +1,30 @@
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    box-shadow: 1px 4px rgb(231, 231, 231);
+    border-radius: 2%;
+    border: 1px rgb(228, 228, 228) solid;
+    width: 30%;
+    display: grid;
+    margin: 0 0 50px 30px;
+    padding: 10px;
+}
+
+img {
+    width: 50%;
+}
+
+.loading{
+    margin-top: 50px;
+    font-size: large;
+    text-align: center;
+    color: #0d6efd;
+    
+}
+
+.hidden{
+    display: none;
+}
