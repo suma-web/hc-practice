@@ -2,6 +2,7 @@
   "name": "reacttodo",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://suma-web.github.io/reactTodo",
   "type": "module",
   "scripts": {
     "dev": "vite",
