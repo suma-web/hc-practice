@@ -10,7 +10,7 @@ import (
 
 func main() {
 	if len(os.Args) != 2 {
-		fmt.Println("Usage: go run ./cmd/importer <logfile>")
+		fmt.Println("Usage: go run main.go <logfile>")
 		os.Exit(1)
 	}
 
