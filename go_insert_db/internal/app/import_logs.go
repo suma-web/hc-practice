@@ -22,6 +22,10 @@ func ImportLogs(filePath string) (err error) {
 	}
 	defer conn.Close()
 
+	if err = db.CreateUsersTable(conn); err != nil {
+		return err
+	}
+
 	tx, err := conn.Begin()
 	if err != nil {
 		return err
